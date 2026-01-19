@@ -1,9 +1,9 @@
 package com.raylafortunato.workshopmongo.services.exception;
 
 public class ObjectNotFoundException extends RuntimeException {
-	private static final long serialVersionUID = 1L;
-	
-	public ObjectNotFoundException(String msg) {
-		super (msg);
-	}
+    private static final long serialVersionUID = 1L;
+
+    public ObjectNotFoundException(String msg) {
+        super(msg);
+    }
 }

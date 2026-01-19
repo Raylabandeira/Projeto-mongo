@@ -21,6 +21,7 @@ import com.raylafortunato.workshopmongo.domain.User;
 import com.raylafortunato.workshopmongo.dto.UserDTO;
 import com.raylafortunato.workshopmongo.services.UserService;
 
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
@@ -66,10 +67,18 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@GetMapping(value = "/{id}/posts")
-    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
-		User obj = userService.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        return ResponseEntity.ok().body(obj.getPosts());
+	@GetMapping("{id}/posts")
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+	    User obj = service.findById(id);
+	    return ResponseEntity.ok().body(obj.getPosts());
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 }
 
